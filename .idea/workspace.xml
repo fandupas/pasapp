@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ddb36ab-6fe1-4ddb-b753-485d1c70af6d" name="Default" comment="">
+    <list default="true" id="9ddb36ab-6fe1-4ddb-b753-485d1c70af6d" name="Default" comment="Cordova Mocks">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/barcodeScanner.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/camera.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/capture.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/contacts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/device.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/deviceMotion.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/deviceOrientation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/dialogs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/file.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/geolocation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/globalization.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/network.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/dist/ngCordovaMocks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/dist/ngCordovaMocks.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/socialSharing.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/splashscreen.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/statusbar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/lib/ng-cordova-mocks/src/vibration.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pasapp.iws" />
@@ -346,7 +370,11 @@
       <created>1422415647778</created>
       <updated>1422415647778</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Cordova Mocks">
+      <created>1422415724412</created>
+      <updated>1422415724412</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -411,7 +439,8 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
     <MESSAGE value="Minor change" />
     <MESSAGE value="Minor commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor commit" />
+    <MESSAGE value="Cordova Mocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cordova Mocks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
