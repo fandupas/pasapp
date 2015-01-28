@@ -14,8 +14,10 @@
         <ion-list ng-controller="VideosCtrl" class="list-inset">
             <ion-item ng-repeat="video in videos.items"  class="item-thumbnail-left" href="#/app/video/{{video.id}}">
                 <img ng-src="{{video.snippet.thumbnails.default.url}}" class="img-circle">
-               <h2>{{video.snippet.title}}</h2>
-                <p>{{video.snippet.description}}</p>
+               <h3 class="wrap">{{video.snippet.title}}</h3>
+                <a ng-controller="ShareCtrl" ng-click="shareVideo('{{video.snippet.resourceId.videoId}}')" class="button button-icon icon ion-share positive">
+
+                </a>
             </ion-item>
         </ion-list>
     </ion-content>

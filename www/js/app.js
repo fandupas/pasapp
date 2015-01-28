@@ -8,18 +8,15 @@ var myMod = angular.module('ngPASLinfo', ['ionic',
                                           'gapi',
                                           'PasControllers',
                                           'PasServices',
-                                          'ngSanitize',
-                                          'com.2fdevs.videogular',
-                                          'com.2fdevs.videogular.plugins.controls',
-                                          'com.2fdevs.videogular.plugins.overlayplay',
-                                          'com.2fdevs.videogular.plugins.poster',
-                                          'info.vietnamcode.nampnq.videogular.plugins.youtube'
+                                          'youtube-embed',
+                                          'ngCordova'
                                          ]);
 
     myMod.value('GoogleApp', {
         apiKey: 'AIzaSyCgOF5EH4i6f1rVntIsLxORMQzRsYFQtfk'
     });
     myMod.constant('PASLinfoChannel', 'UCeXH7fpqGj-MCPPLpH_J3FQ');
+    myMod.constant('YoutubeUrl', 'https://www.youtube.com/watch?v=');
 
     myMod.run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {

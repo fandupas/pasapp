@@ -16,20 +16,8 @@ angular.module('PasControllers', [])
     .controller('VideoCtrl', function ($scope, VideoService, $stateParams, $sce) {
         var videoID = $stateParams.videoID;
         $scope.video = VideoService.getVideoByIDLocal(videoID);
-        this.config = {
-            sources: [
-                {src: "http://www.youtube.com/watch?v="+$scope.video.snippet.resourceId.videoId}
-            ],
-            theme: "../lib/videogular-themes-default/videogular.css",
-            plugins: {
-
-            },
-            responsive: true
-        };
-
     })
     .controller('MainCtrl', function ($scope, VideoService, $stateParams) {
-
 
     })
     .controller('MenuCtrl', function ($scope, VideoService, PASLinfoChannel) {
@@ -38,6 +26,16 @@ angular.module('PasControllers', [])
             $scope.playlists = response;
             VideoService.playlists = response.items;
         });
+    })
+    .controller('ShareCtrl', function ($scope, $cordovaSocialSharing, YoutubeUrl) {
+        $scope.shareVideo = function(videoId){
+            var videoUrl = YoutubeUrl+videoId;
+            $cordovaSocialSharing
+                .share(null, null, null, videoUrl) // Share via native share sheet
+                .then(function(result) {
+                    // Success!
+                });
+        };
     })
     .controller('PlaylistCtrl', function ($scope,$stateParams, VideoService) {
         var id = $stateParams.playlistID;

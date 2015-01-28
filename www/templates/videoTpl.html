@@ -1,59 +1,13 @@
-<div class="list card">
-    <div class="item item-divider">
-        <h2>{{video.snippet.title}}</h2>
-    </div>
-    <div ng-controller="VideoCtrl as controller" class="videogular-container">
-        <videogular vg-theme="controller.config.theme">
-            <vg-video vg-src="controller.config.sources"
-                      vg-tracks="controller.config.tracks"
-                      vg-youtube="rel=1;showinfo=1"
-                      vg-responsive="true"  >
-            </vg-video>
-
-            <vg-controls>
-                <vg-play-pause-button></vg-play-pause-button>
-                <vg-timedisplay>{{ currentTime | date:'mm:ss' }}</vg-timedisplay>
-                <vg-scrubBar>
-                    <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
-                </vg-scrubBar>
-                <vg-timedisplay>{{ timeLeft | date:'mm:ss' }}</vg-timedisplay>
-                <vg-volume>
-                    <vg-mutebutton></vg-mutebutton>
-                    <vg-volumebar></vg-volumebar>
-                </vg-volume>
-                <vg-fullscreenButton></vg-fullscreenButton>
-            </vg-controls>
-
-            <vg-overlay-play></vg-overlay-play>
-            <vg-poster-image vg-url='controller.config.plugins.poster'></vg-poster-image>
-        </videogular>
-    </div>
-    <div class="item item-body">
-        <p>
-            This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-            the content is from a card-body consisting of an image and paragraph text. The footer
-            consists of tabs, icons aligned left, within the card-footer.
-        </p>
-
-        <p>
-            <a href="#" class="subdued">1 Like</a>
-            <a href="#" class="subdued">5 Comments</a>
-        </p>
-    </div>
-
-
-    <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="#">
-            <i class="icon ion-thumbsup"></i>
-            Like
-        </a>
-        <a class="tab-item" href="#">
-            <i class="icon ion-chatbox"></i>
-            Comment
-        </a>
-        <a class="tab-item" href="#">
-            <i class="icon ion-share"></i>
-            Share
-        </a>
-    </div>
+    <div class="card">
+        <div class="item item-divider">
+     <h2 class="wrap">{{video.snippet.title}}</h2>
+     </div>
+        <div class="embed-responsive embed-responsive-16by9">
+            <div class="embed-responsive-item">
+                <youtube-video video-id="video.snippet.resourceId.videoId"></youtube-video>
+            </div>
+        </div>
+  <div class="item item-text-wrap">
+    {{video.snippet.description}}
+  </div>
 </div>
