@@ -30,11 +30,9 @@ angular.module('PasControllers', [])
     .controller('ShareCtrl', function ($scope, $cordovaSocialSharing, YoutubeUrl) {
         $scope.shareVideo = function(videoId){
             var videoUrl = YoutubeUrl+videoId;
+            console.log(videoUrl);
             $cordovaSocialSharing
-                .share(null, null, null, videoUrl) // Share via native share sheet
-                .then(function(result) {
-                    // Success!
-                });
+                .share(null, null, null, videoUrl);
         };
     })
     .controller('PlaylistCtrl', function ($scope,$stateParams, VideoService) {
