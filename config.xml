@@ -28,5 +28,4 @@
     <feature name="SocialSharing">
         <param name="wp-package" value="SocialSharing"/>
     </feature>
-    <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io" />
 </widget>
