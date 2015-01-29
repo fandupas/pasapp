@@ -32,7 +32,8 @@ angular.module('PasControllers', [])
             var videoUrl = YoutubeUrl+videoId;
             console.log(videoUrl);
             $cordovaSocialSharing
-                .share(null, null, null, videoUrl);
+                .share(null, null, null, videoUrl) // Share via native share sheet
+                .then(function(result) {})
         };
     })
     .controller('PlaylistCtrl', function ($scope,$stateParams, VideoService) {
