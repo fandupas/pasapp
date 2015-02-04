@@ -8,6 +8,7 @@ var myMod = angular.module('ngPASLinfo', ['ionic',
                                           'gapi',
                                           'PasControllers',
                                           'PasServices',
+                                          'PasFilters',
                                           'youtube-embed',
                                           'ngCordova'
                                          ]);

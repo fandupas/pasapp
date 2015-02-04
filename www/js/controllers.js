@@ -4,13 +4,27 @@ angular.module('PasControllers', [])
 
     })
     .controller('VideosCtrl', function ($scope, VideoService, $stateParams) {
+        var listIds;
         var id = $stateParams.playlistID;
         var promise = VideoService.getVideosByPlaylist(id);
         promise.then(function (response) {
             console.log("Videos");
             console.log(response);
-            $scope.videos = response;
-            VideoService.videos = response.items;
+            var listVideos = response.items;
+            for (i = 0; i < listVideos.length; i++) {
+                var videoId = listVideos[i].snippet.resourceId.videoId;
+                if(i == 0)
+                    listIds = videoId;
+                else
+                    listIds = listIds + ',' + videoId;
+            }
+            var subpromise = VideoService.getListVideosByIDs(listIds);
+            subpromise.then(function (response){
+                console.log('Details Videos');
+                console.log(response);
+                $scope.videos = response;
+                VideoService.videos = response.items;
+            });
         });
     })
     .controller('VideoCtrl', function ($scope, VideoService, $stateParams, $sce) {
