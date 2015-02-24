@@ -8,6 +8,19 @@
             </div>
         </div>
   <div class="item item-text-wrap">
-    {{video.snippet.description}}
+      <p class="text-center">
+          <i class="icon ion-ios7-eye"></i>
+          {{video.statistics.viewCount}}&nbsp;
+
+          <i class="icon ion-thumbsup"></i>
+          {{video.statistics.likeCount}}&nbsp;
+
+          <i class="icon ion-thumbsdown"></i>
+          {{video.statistics.dislikeCount}}&nbsp;
+
+          <i class="icon ion-chatbox"></i>
+          {{video.statistics.commentCount}}
+      </p>
+    <p>{{video.snippet.description}}</p>
   </div>
 </div>

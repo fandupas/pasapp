@@ -19,7 +19,7 @@ var myMod = angular.module('ngPASLinfo', ['ionic',
     myMod.constant('PASLinfoChannel', 'UCeXH7fpqGj-MCPPLpH_J3FQ');
     myMod.constant('YoutubeUrl', 'https://www.youtube.com/watch?v=');
 
-    myMod.run(function ($ionicPlatform) {
+    myMod.run(function ($ionicPlatform, VideoService) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -62,7 +62,7 @@ var myMod = angular.module('ngPASLinfo', ['ionic',
                 }
             })
             .state('app.video', {
-                url: "/video/:videoID",
+                url: "/playlist/:playID/video/:videoID",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/video.html",

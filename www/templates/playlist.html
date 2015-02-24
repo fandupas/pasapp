@@ -10,11 +10,12 @@
             </div>
         </div>
         <ion-list ng-controller="VideosCtrl" class="list-inset">
-            <ion-item ng-repeat="video in videos.items"  class="item item-thumbnail-left" href="#/app/video/{{video.id}}">
+            <ion-item ng-repeat="video in videos.items"  class="item item-thumbnail-left" href="#/app/playlist/{{playlist.id}}/video/{{video.id}}">
                 <img ng-src="{{video.snippet.thumbnails.default.url}}" class="img-thumbnail">
-               <h3 class="wrap">{{video.snippet.title}}
-                   <small>{{video.contentDetails.duration | formatDuration}}</small>
-               </h3>
+               <h3 class="wrap">{{video.snippet.title}}</h3>
+
+                <h4><strong  class="text-left">{{video.contentDetails.duration | formatDuration}}&nbsp;-&nbsp;</strong>
+                <strong class="text-right">{{video.snippet.publishedAt | fromDate}}</strong></h4>
 
                 <p>
                     <i class="icon ion-ios7-eye"></i>

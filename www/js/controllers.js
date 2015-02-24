@@ -11,28 +11,40 @@ angular.module('PasControllers', [])
             console.log("Videos");
             console.log(response);
             var listVideos = response.items;
-            for (i = 0; i < listVideos.length; i++) {
-                var videoId = listVideos[i].snippet.resourceId.videoId;
-                if(i == 0)
-                    listIds = videoId;
-                else
-                    listIds = listIds + ',' + videoId;
-            }
+            var listIds = VideoService.getListIDs(listVideos);
             var subpromise = VideoService.getListVideosByIDs(listIds);
             subpromise.then(function (response){
                 console.log('Details Videos');
                 console.log(response);
                 $scope.videos = response;
-                VideoService.videos = response.items;
+
+                VideoService.videos[(id)] = response.items;
             });
         });
     })
-    .controller('VideoCtrl', function ($scope, VideoService, $stateParams, $sce) {
+    .controller('VideoCtrl', function ($scope, VideoService, $stateParams) {
         var videoID = $stateParams.videoID;
-        $scope.video = VideoService.getVideoByIDLocal(videoID);
+        var playID = $stateParams.playID;
+        $scope.video = VideoService.getVideoByIDLocal(playID,videoID);
     })
-    .controller('MainCtrl', function ($scope, VideoService, $stateParams) {
+    .controller('MainCtrl', function ($scope, VideoService, $stateParams, PASLinfoChannel) {
+        var promise = VideoService.getChannelInfo(PASLinfoChannel);
+        promise.then(function (response) {
+            var list = response.items[0];
+            VideoService.uploadedID = list.contentDetails.relatedPlaylists.uploads;
+            var promise = VideoService.getVideosByPlaylist(VideoService.uploadedID);
+            promise.then(function (response) {
+                var listVideos = response.items;
+                var listIds = VideoService.getListIDs(listVideos);
+                var subpromise = VideoService.getListVideosByIDs(listIds);
+                subpromise.then(function (response){
+                    VideoService.uploadedVideos = response.items;
+                    $scope.video = VideoService.uploadedVideos[0];
+                    VideoService.videos[(VideoService.uploadedID)] = response.items;
+                });
+            });
 
+        });
     })
     .controller('MenuCtrl', function ($scope, VideoService, PASLinfoChannel) {
         var promise = VideoService.getPlaylistsByChannel(PASLinfoChannel);
