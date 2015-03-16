@@ -47,3 +47,15 @@ angular.module('PasServices', [])
             return listIds;
         }
     })
+
+    .service('LoadService', function ($ionicLoading) {
+        this.show = function() {
+            $ionicLoading.show({
+                template: 'Chargement...',
+                animation: 'fade-in'
+            });
+        };
+        this.hide = function(){
+            $ionicLoading.hide();
+        };
+    })

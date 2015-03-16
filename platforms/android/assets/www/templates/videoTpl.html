@@ -1,0 +1,26 @@
+    <div class="card">
+        <div class="item item-divider">
+     <h2 class="wrap">{{video.snippet.title}}</h2>
+     </div>
+        <div class="embed-responsive embed-responsive-16by9">
+            <div class="embed-responsive-item">
+                <youtube-video video-id="video.id"></youtube-video>
+            </div>
+        </div>
+  <div class="item item-text-wrap">
+      <p class="text-center">
+          <i class="icon ion-ios-eye"></i>
+          {{video.statistics.viewCount}}&nbsp;
+
+          <i class="icon ion-thumbsup"></i>
+          {{video.statistics.likeCount}}&nbsp;
+
+          <i class="icon ion-thumbsdown"></i>
+          {{video.statistics.dislikeCount}}&nbsp;
+
+          <i class="icon ion-chatbox"></i>
+          {{video.statistics.commentCount}}
+      </p>
+    <p>{{video.snippet.description}}</p>
+  </div>
+</div>

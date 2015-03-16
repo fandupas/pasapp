@@ -1,5 +1,5 @@
     <div class="card">
-        <div class="item item-divider">
+        <div class="item item-assertive  item-divider">
      <h2 class="wrap">{{video.snippet.title}}</h2>
      </div>
         <div class="embed-responsive embed-responsive-16by9">
@@ -9,7 +9,7 @@
         </div>
   <div class="item item-text-wrap">
       <p class="text-center">
-          <i class="icon ion-ios7-eye"></i>
+          <i class="icon ion-ios-eye"></i>
           {{video.statistics.viewCount}}&nbsp;
 
           <i class="icon ion-thumbsup"></i>
@@ -21,6 +21,12 @@
           <i class="icon ion-chatbox"></i>
           {{video.statistics.commentCount}}
       </p>
-    <p>{{video.snippet.description}}</p>
   </div>
+        <div class="item item-text-wrap">{{video.snippet.description}}</div>
+        <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" ng-controller="ActionsCtrl" ng-click="shareVideo('{{video.id}}')">
+                <i class="icon ion-android-share-alt"></i>
+                Partager
+            </a>
+        </div>
 </div>

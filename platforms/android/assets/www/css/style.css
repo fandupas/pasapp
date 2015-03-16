@@ -1,0 +1,12 @@
+/* Empty. Add your own CSS if you like */
+.wrap {
+   white-space: normal !important;
+}
+a {
+    text-decoration: none;
+}
+/* header */
+.bar.bar-positive {
+    background-color: #7379a3;
+    color: #f4f4f4;
+}

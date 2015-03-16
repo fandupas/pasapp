@@ -5,3 +5,22 @@
 a {
     text-decoration: none;
 }
+/* header */
+.bar.bar-positive {
+ /border-color: #2C3E50 !important;
+     background-color: #3B5998 !important;
+     background-image: url("../img/paslinfo.jpg") !important;
+     background-size: cover;
+     background-position: center center;
+ }
+.bar.bar-assertive {
+    border-color: #2C3E50 !important;
+    background-color: #3B5998 !important;
+}
+.positive, a.positive {
+    color: #3B5998 !important;
+}
+.item.item-assertive {
+    border-color: #2C3E50 !important;
+    background-color: #3B5998 !important;
+}

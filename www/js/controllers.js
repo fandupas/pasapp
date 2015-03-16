@@ -3,10 +3,11 @@ angular.module('PasControllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
     })
-    .controller('VideosCtrl', function ($scope, VideoService, $stateParams) {
+    .controller('VideosCtrl', function ($scope, VideoService, LoadService, $stateParams) {
         var listIds;
         var id = $stateParams.playlistID;
         var promise = VideoService.getVideosByPlaylist(id);
+        LoadService.show();
         promise.then(function (response) {
             console.log("Videos");
             console.log(response);
@@ -19,6 +20,7 @@ angular.module('PasControllers', [])
                 $scope.videos = response;
 
                 VideoService.videos[(id)] = response.items;
+                LoadService.hide();
             });
         });
     })
@@ -27,8 +29,9 @@ angular.module('PasControllers', [])
         var playID = $stateParams.playID;
         $scope.video = VideoService.getVideoByIDLocal(playID,videoID);
     })
-    .controller('MainCtrl', function ($scope, VideoService, $stateParams, PASLinfoChannel) {
+    .controller('MainCtrl', function ($scope, VideoService, LoadService, $stateParams, PASLinfoChannel) {
         var promise = VideoService.getChannelInfo(PASLinfoChannel);
+        LoadService.show();
         promise.then(function (response) {
             var list = response.items[0];
             VideoService.uploadedID = list.contentDetails.relatedPlaylists.uploads;
@@ -41,6 +44,7 @@ angular.module('PasControllers', [])
                     VideoService.uploadedVideos = response.items;
                     $scope.video = VideoService.uploadedVideos[0];
                     VideoService.videos[(VideoService.uploadedID)] = response.items;
+                    LoadService.hide();
                 });
             });
 
@@ -53,14 +57,32 @@ angular.module('PasControllers', [])
             VideoService.playlists = response.items;
         });
     })
-    .controller('ShareCtrl', function ($scope, $cordovaSocialSharing, YoutubeUrl) {
+    .controller('ActionsCtrl', function ($scope, $cordovaSocialSharing, YoutubeUrl, $ionicActionSheet) {
         $scope.shareVideo = function(videoId){
             var videoUrl = YoutubeUrl+videoId;
-            console.log(videoUrl);
             $cordovaSocialSharing
                 .share(null, null, null, videoUrl) // Share via native share sheet
                 .then(function(result) {})
-        };
+        },
+            $scope.showAction = function(videoId){
+                var hideSheet = $ionicActionSheet.show({
+                    buttons: [
+                        { text: '<i class="icon ion-android-share-alt"></i> <b>Partager</b>' }
+                    ],
+                    titleText: 'Options',
+                    cancelText: 'Annuler',
+                    cancel: function() {
+                        // add cancel code..
+                    },
+                    buttonClicked: function(index) {
+                        if(index == 0){
+                          $scope.shareVideo(videoId);
+                        }
+                        return true;
+                    }
+                });
+
+            };
     })
     .controller('PlaylistCtrl', function ($scope,$stateParams, VideoService) {
         var id = $stateParams.playlistID;
