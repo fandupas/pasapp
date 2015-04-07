@@ -47,3 +47,36 @@ angular.module('PasServices', [])
             return listIds;
         }
     })
+
+    .service('GeneralService', function () {
+        this.deleteDuplicates = function(origArr) {
+            var newArr = [],
+                origLen = origArr.length,
+                found, x, y;
+
+            for (x = 0; x < origLen; x++) {
+                found = undefined;
+                for (y = 0; y < newArr.length; y++) {
+                    if (origArr[x].id === newArr[y].id) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    newArr.push(origArr[x]);
+                }
+            }
+            return newArr;
+        }
+    })
+
+    .service('LoadService', function ($ionicLoading) {
+        this.show = function() {
+            $ionicLoading.show({
+                template: '<ion-spinner icon="lines" class="spinner-android"></ion-spinner>'
+            });
+        };
+        this.hide = function(){
+            $ionicLoading.hide();
+        };
+    })

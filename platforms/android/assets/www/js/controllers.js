@@ -3,10 +3,11 @@ angular.module('PasControllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
     })
-    .controller('VideosCtrl', function ($scope, VideoService, $stateParams) {
+    .controller('VideosCtrl', function ($scope, VideoService, LoadService, GeneralService, $stateParams) {
         var listIds;
         var id = $stateParams.playlistID;
         var promise = VideoService.getVideosByPlaylist(id);
+        LoadService.show();
         promise.then(function (response) {
             console.log("Videos");
             console.log(response);
@@ -14,11 +15,14 @@ angular.module('PasControllers', [])
             var listIds = VideoService.getListIDs(listVideos);
             var subpromise = VideoService.getListVideosByIDs(listIds);
             subpromise.then(function (response){
+                response.items = GeneralService.deleteDuplicates(response.items);
                 console.log('Details Videos');
                 console.log(response);
                 $scope.videos = response;
 
+
                 VideoService.videos[(id)] = response.items;
+                LoadService.hide();
             });
         });
     })
@@ -26,21 +30,28 @@ angular.module('PasControllers', [])
         var videoID = $stateParams.videoID;
         var playID = $stateParams.playID;
         $scope.video = VideoService.getVideoByIDLocal(playID,videoID);
+        $scope.playlist = VideoService.getPlaylistsByIDLocal(playID);
     })
-    .controller('MainCtrl', function ($scope, VideoService, $stateParams, PASLinfoChannel) {
+    .controller('MainCtrl', function ($scope, VideoService, LoadService, GeneralService, $stateParams, PASLinfoChannel) {
         var promise = VideoService.getChannelInfo(PASLinfoChannel);
+        LoadService.show();
         promise.then(function (response) {
             var list = response.items[0];
+            console.log("Uploaded Videos");
+            console.log(list);
             VideoService.uploadedID = list.contentDetails.relatedPlaylists.uploads;
+            $scope.playlist = { id: list.contentDetails.relatedPlaylists.uploads };
             var promise = VideoService.getVideosByPlaylist(VideoService.uploadedID);
             promise.then(function (response) {
                 var listVideos = response.items;
                 var listIds = VideoService.getListIDs(listVideos);
                 var subpromise = VideoService.getListVideosByIDs(listIds);
                 subpromise.then(function (response){
+                    response.items = GeneralService.deleteDuplicates(response.items);
                     VideoService.uploadedVideos = response.items;
-                    $scope.video = VideoService.uploadedVideos[0];
-                    VideoService.videos[(VideoService.uploadedID)] = response.items;
+                    VideoService.videos[($scope.playlist.id)] = response.items;
+                    $scope.videos = response;
+                    LoadService.hide();
                 });
             });
 
@@ -51,6 +62,9 @@ angular.module('PasControllers', [])
         promise.then(function (response) {
             $scope.playlists = response;
             VideoService.playlists = response.items;
+            $scope.UpTitle = "Dernières Vidéos";
+            $scope.UpId = VideoService.uploadedID;
+
         });
     })
     .controller('ActionsCtrl', function ($scope, $cordovaSocialSharing, YoutubeUrl, $ionicActionSheet) {

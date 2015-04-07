@@ -14,9 +14,9 @@
         </header>
         <ion-content class="has-header">
             <div class="list">
-                <a nav-clear menu-close class="item item-icon-left positive" href="#/app/main">
-                    <i class="icon ion-ios-home-outline"></i>
-                    ACCEUIL
+                <a nav-clear menu-close class="item" href="#/app/main" ng-show="true">
+
+                    <h2>{{UpTitle}}</h2>
                 </a>
 
                 <a nav-clear menu-close ng-repeat="playlist in playlists.items | orderBy: '+id'" class="item" href="#/app/playlists/{{playlist.id}}" ng-show="true">

@@ -1,0 +1,28 @@
+<ion-list>
+    <ion-item ng-repeat="video in videos.items | orderBy: '-snippet.publishedAt'"  class="item item-thumbnail-left" href="#/app/playlist/{{playlist.id}}/video/{{video.id}}">
+
+        <img ng-src="{{video.snippet.thumbnails.default.url}}" class="img-thumbnail">
+        <h3 class="wrap">{{video.snippet.title}}</h3>
+
+        <h4><strong  class="text-left">{{video.contentDetails.duration | formatDuration}}&nbsp;-&nbsp;</strong>
+            <strong class="text-right">{{video.snippet.publishedAt | fromDate}}</strong></h4>
+
+        <p>
+            <i class="icon ion-ios-eye"></i>
+            {{video.statistics.viewCount}}&nbsp;
+
+            <i class="icon ion-thumbsup"></i>
+            {{video.statistics.likeCount}}&nbsp;
+
+            <i class="icon ion-thumbsdown"></i>
+            {{video.statistics.dislikeCount}}&nbsp;
+
+            <i class="icon ion-chatbox"></i>
+            {{video.statistics.commentCount}}
+        </p>
+
+        <a ng-controller="ActionsCtrl" class="item-icon-right" ng-click="showAction('{{video.id}}')">
+            <i class="icon ion-android-more-vertical"></i>
+        </a>
+    </ion-item>
+</ion-list>

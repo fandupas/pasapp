@@ -7,6 +7,36 @@ a {
 }
 /* header */
 .bar.bar-positive {
-    background-color: #7379a3;
-    color: #f4f4f4;
+ /border-color: #2C3E50 !important;
+     background-color: #3B5998 !important;
+     background-image: url("../img/paslinfo.jpg") !important;
+     background-size: cover;
+     background-position: center center;
+ }
+.bar.bar-assertive {
+    border-color: #2C3E50 !important;
+    background-color: #3B5998 !important;
+}
+.positive, a.positive {
+    color: #3B5998 !important;
+}
+.item.item-assertive {
+    border-color: #2C3E50 !important;
+    background-color: #3B5998 !important;
+}
+.spinner svg {
+    width: 30px;
+    height: 30px;
+    stroke: #dddddd;
+    fill: #434343;
+}
+a:hover, a:focus {
+    color: #2C3E50 !important;
+    text-decoration: none !important;
+}
+.item-icon-right {
+    padding-right: 0px !important;
+}
+.action-sheet .button {
+    color: #3B5998 !important;
 }
